@@ -1,0 +1,26 @@
+{
+  "profile": {
+    "level": 4,
+    "xp": 2561,
+    "worldsCleared": [
+      0,
+      1
+    ],
+    "name": "Player",
+    "updatedAt": 1788603253096
+  },
+  "leaderboard": [
+    {
+      "name": "SupabaseSmoke-1787467347",
+      "score": 1001,
+      "updatedAt": 1787467347000
+    },
+    {
+      "name": "Player",
+      "score": 217,
+      "updatedAt": 1787576745045
+    }
+  ],
+  "profileUpdatedAt": 1788603253096,
+  "leaderboardUpdatedAt": 1788603253097
+}

@@ -1,0 +1,124 @@
+{
+  "name": "tower-defense-game",
+  "version": "1.0.0",
+  "description": "Blastova: The Last Wave - A cross-platform tower defense game built with Electron and Phaser 3",
+  "main": "electron/main-cjs.js",
+  "homepage": "./",
+  "type": "module",
+  "scripts": {
+    "ensure:electron": "node scripts/ensure-electron.mjs",
+    "start": "vite preview",
+    "dev": "npm run ensure:electron && concurrently -k \"npm run dev:renderer\" \"npm run dev:electron\"",
+    "dev:renderer": "vite --host 127.0.0.1",
+    "dev:electron": "node scripts/run-electron-dev.mjs",
+    "matchmaker:start": "node server/matchmaker.mjs",
+    "test:path-map": "node scripts/map-path-coordinates.mjs --all-waves",
+    "test:path-map:wave2": "node scripts/map-path-coordinates.mjs --wave 2 --output reports/path-map-wave2.json",
+    "test:path-image": "node scripts/analyze-map-image-path.mjs",
+    "test:place-wave2-near-path": "node scripts/place-wave2-near-path-towers.mjs",
+    "build": "vite build",
+    "preview": "vite preview",
+    "preview:prod-local": "npm run build && vite preview --host 127.0.0.1 --port 4173 --strictPort",
+    "electron:railway": "ELECTRON_RENDERER_URL=https://blastova-frontend-production.up.railway.app node scripts/run-electron-dev.mjs",
+    "electron:preview": "concurrently -k \"npm run preview:prod-local\" \"ELECTRON_RENDERER_URL=http://127.0.0.1:4173 node scripts/run-electron-dev.mjs\"",
+    "electron:build": "npm run ensure:electron && npm run build && electron-builder",
+    "electron:build:mac": "npm run ensure:electron && npm run build && electron-builder --mac dmg",
+    "electron:build:win": "npm run ensure:electron && npm run build && electron-builder --win nsis",
+    "electron:build:linux": "npm run ensure:electron && npm run build && electron-builder --linux AppImage"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.5.0",
+    "@capacitor/app": "^8.1.1",
+    "@capacitor/browser": "^8.0.4",
+    "@capacitor/cli": "^8.5.0",
+    "@capacitor/core": "^8.5.0",
+    "@capacitor/haptics": "^8.0.2",
+    "@capacitor/ios": "^8.5.0",
+    "@capacitor/splash-screen": "^8.0.2",
+    "@capacitor/status-bar": "^8.0.3",
+    "@supabase/supabase-js": "^2.112.3",
+    "electron-updater": "^6.8.9",
+    "pg": "^8.13.1",
+    "phaser": "^3.55.2",
+    "qrcode": "^1.5.4",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "three": "^0.179.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "@vitejs/plugin-vue": "^4.5.0",
+    "autoprefixer": "^10.5.4",
+    "concurrently": "^8.2.2",
+    "electron": "^27.3.11",
+    "electron-builder": "^24.6.4",
+    "electron-updater": "^6.6.2",
+    "jpeg-js": "^0.4.4",
+    "postcss": "^8.5.25",
+    "tailwindcss": "^3.4.19",
+    "vite": "^5.0.0",
+    "vite-plugin-pwa": "^1.3.0",
+    "wait-on": "^7.0.1",
+    "ws": "^8.18.0"
+  },
+  "build": {
+    "appId": "com.kodekenobi.blastova",
+    "productName": "Blastova",
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json",
+      "!dist/*.AppImage",
+      "!dist/*.dmg",
+      "!dist/*.dmg.blockmap",
+      "!dist/*.exe",
+      "!dist/*.nsis.7z",
+      "!dist/mac-arm64/**",
+      "!dist/linux-arm64-unpacked/**",
+      "!dist/win-arm64-unpacked/**",
+      "!dist/builder-debug.yml",
+      "!dist/builder-effective-config.yaml",
+      "!node_modules/@capacitor/*/android/build/**",
+      "!node_modules/@capacitor/*/android/src/**",
+      "!node_modules/@capacitor/*/ios/**",
+      "!**/android/build/**",
+      "!**/*.{java,kt,swift,gradle}"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "KodeKenobi",
+      "repo": "blastova-website",
+      "releaseType": "release"
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "icon": "public/icons/icon-512.png"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "public/icons/icon-512.png"
+    },
+    "nsis": {
+      "allowElevation": false,
+      "oneClick": true,
+      "perMachine": false
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "icon": "public/icons/icon-512.png",
+      "category": "Game"
+    }
+  },
+  "allowScripts": {
+    "electron@27.3.11": true
+  }
+}

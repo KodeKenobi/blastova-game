@@ -1,0 +1,15 @@
+node_modules
+dist
+dev-dist
+.tmp
+.npm-cache
+android
+electron
+release-artifacts
+build
+*.dmg
+*.exe
+*.blockmap
+*.apk
+*.aab
+*.asar

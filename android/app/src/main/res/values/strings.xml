@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Blastova</string>
+    <string name="title_activity_main">Blastova: The Last Wave</string>
+    <string name="package_name">com.kodekenobi.blastova</string>
+    <string name="custom_url_scheme">com.kodekenobi.blastova</string>
+</resources>
