@@ -7,6 +7,10 @@ build/
 .env
 .env.local
 .cache/
+# Signing material — never commit, anywhere in the tree.
+*.keystore
+*.jks
+keystore.properties
 android/keystore.properties
 android/app/*.keystore
 android/app/*.jks
