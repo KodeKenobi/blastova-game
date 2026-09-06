@@ -166,12 +166,20 @@ jobs:
             exit 1
           fi
           echo "$KEYSTORE_BASE64" | base64 --decode > android/app/blastova-release.keystore
-          cat > android/keystore.properties <<EOF
-          storeFile=app/blastova-release.keystore
-          storePassword=$STORE_PASSWORD
-          keyAlias=$KEY_ALIAS
-          keyPassword=$KEY_PASSWORD
-          EOF
+
+          # Pasted secrets often carry a trailing newline/CR, which breaks the alias lookup.
+          STORE_PASSWORD=$(printf '%s' "$STORE_PASSWORD" | tr -d '\r\n')
+          KEY_ALIAS=$(printf '%s' "$KEY_ALIAS" | tr -d '\r\n')
+          KEY_PASSWORD=$(printf '%s' "$KEY_PASSWORD" | tr -d '\r\n')
+
+          printf 'storeFile=app/blastova-release.keystore\n' > android/keystore.properties
+          printf 'storePassword=%s\n' "$STORE_PASSWORD" >> android/keystore.properties
+          printf 'keyAlias=%s\n' "$KEY_ALIAS" >> android/keystore.properties
+          printf 'keyPassword=%s\n' "$KEY_PASSWORD" >> android/keystore.properties
+
+          echo "Aliases present in keystore:"
+          keytool -list -keystore android/app/blastova-release.keystore \
+            -storepass "$STORE_PASSWORD" 2>/dev/null | grep -i "^blastova\|PrivateKeyEntry" || true
       
       - name: Build Android APK
         working-directory: ./android
