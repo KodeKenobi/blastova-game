@@ -90,19 +90,21 @@
     "publish": {
       "provider": "github",
       "owner": "KodeKenobi",
-      "repo": "blastova-website",
+      "repo": "blastova-game",
       "releaseType": "release"
     },
     "mac": {
       "target": [
         "dmg"
       ],
+      "artifactName": "Blastova-mac-${arch}.${ext}",
       "icon": "public/icons/icon-512.png"
     },
     "win": {
       "target": [
         "nsis"
       ],
+      "artifactName": "Blastova-win-${arch}.${ext}",
       "icon": "public/icons/icon-512.png"
     },
     "nsis": {
@@ -114,6 +116,7 @@
       "target": [
         "AppImage"
       ],
+      "artifactName": "Blastova-linux-${arch}.${ext}",
       "icon": "public/icons/icon-512.png",
       "category": "Game"
     }
