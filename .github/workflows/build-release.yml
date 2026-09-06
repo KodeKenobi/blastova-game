@@ -59,7 +59,7 @@ jobs:
         run: npm ci
       
       - name: Build macOS DMG
-        run: npm run electron:build:mac
+        run: npm run ensure:electron && npm run build && npx electron-builder --mac dmg --publish never
       
       - name: Upload macOS artifacts
         uses: actions/upload-artifact@v4
@@ -85,7 +85,7 @@ jobs:
         run: npm ci
       
       - name: Build Windows NSIS
-        run: npm run electron:build:win
+        run: npm run ensure:electron && npm run build && npx electron-builder --win nsis --publish never
       
       - name: Upload Windows artifacts
         uses: actions/upload-artifact@v4
@@ -113,7 +113,7 @@ jobs:
           sudo apt-get install -y libfuse2 libxss1
       
       - name: Build Linux AppImage
-        run: npm run electron:build:linux
+        run: npm run ensure:electron && npm run build && npx electron-builder --linux AppImage --publish never
       
       - name: Upload Linux artifacts
         uses: actions/upload-artifact@v4
@@ -146,6 +146,10 @@ jobs:
       
       - name: Build Vite assets
         run: npm run build
+
+      # Generates android/capacitor-cordova-android-plugins/, which is gitignored.
+      - name: Sync Capacitor Android project
+        run: npx cap sync android
       
       - name: Restore signing keystore
         env:
