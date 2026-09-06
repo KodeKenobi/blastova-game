@@ -320,7 +320,7 @@
               return;
             }
             var currentVersion = window.BlastovaUpdater.getVersionName();
-            var response = await fetch('https://api.github.com/repos/KodeKenobi/blastova-website/releases/latest', { headers: { Accept: 'application/vnd.github+json' } });
+            var response = await fetch('https://api.github.com/repos/KodeKenobi/blastova-game/releases/latest', { headers: { Accept: 'application/vnd.github+json' } });
             if (!response.ok) throw new Error('release check failed');
             var release = await response.json();
             var apk = Array.isArray(release.assets) ? release.assets.find((asset) => asset.name === 'app-release.apk') : null;
