@@ -186,10 +186,27 @@ jobs:
             echo "::warning::ANDROID_KEY_ALIAS does not match the keystore; using the alias found in the keystore."
           fi
 
+          # keytool -certreq needs the private key, so it proves the key password before gradle runs.
+          key_password_works() {
+            keytool -certreq -alias "$ACTUAL_ALIAS" \
+              -keystore android/app/blastova-release.keystore \
+              -storepass "$STORE_PASSWORD" -keypass "$1" >/dev/null 2>&1
+          }
+
+          if key_password_works "$KEY_PASSWORD"; then
+            EFFECTIVE_KEY_PASSWORD="$KEY_PASSWORD"
+          elif key_password_works "$STORE_PASSWORD"; then
+            echo "::warning::ANDROID_KEY_PASSWORD is wrong; the store password unlocks the key, using that instead."
+            EFFECTIVE_KEY_PASSWORD="$STORE_PASSWORD"
+          else
+            echo "::error::Neither ANDROID_KEY_PASSWORD nor ANDROID_STORE_PASSWORD can unlock key '$ACTUAL_ALIAS'."
+            exit 1
+          fi
+
           printf 'storeFile=app/blastova-release.keystore\n' > android/keystore.properties
           printf 'storePassword=%s\n' "$STORE_PASSWORD" >> android/keystore.properties
           printf 'keyAlias=%s\n' "$ACTUAL_ALIAS" >> android/keystore.properties
-          printf 'keyPassword=%s\n' "$KEY_PASSWORD" >> android/keystore.properties
+          printf 'keyPassword=%s\n' "$EFFECTIVE_KEY_PASSWORD" >> android/keystore.properties
       
       - name: Build Android APK
         working-directory: ./android
