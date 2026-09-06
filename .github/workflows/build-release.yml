@@ -172,14 +172,24 @@ jobs:
           KEY_ALIAS=$(printf '%s' "$KEY_ALIAS" | tr -d '\r\n')
           KEY_PASSWORD=$(printf '%s' "$KEY_PASSWORD" | tr -d '\r\n')
 
+          # Authoritative alias comes from the keystore, so a stale secret can't break signing.
+          ACTUAL_ALIAS=$(keytool -list -keystore android/app/blastova-release.keystore \
+            -storepass "$STORE_PASSWORD" 2>/dev/null \
+            | awk -F',' '/PrivateKeyEntry/ { print $1; exit }')
+
+          if [ -z "$ACTUAL_ALIAS" ]; then
+            echo "::error::Could not read any PrivateKeyEntry from the keystore; check ANDROID_STORE_PASSWORD."
+            exit 1
+          fi
+
+          if [ "$ACTUAL_ALIAS" != "$KEY_ALIAS" ]; then
+            echo "::warning::ANDROID_KEY_ALIAS does not match the keystore; using the alias found in the keystore."
+          fi
+
           printf 'storeFile=app/blastova-release.keystore\n' > android/keystore.properties
           printf 'storePassword=%s\n' "$STORE_PASSWORD" >> android/keystore.properties
-          printf 'keyAlias=%s\n' "$KEY_ALIAS" >> android/keystore.properties
+          printf 'keyAlias=%s\n' "$ACTUAL_ALIAS" >> android/keystore.properties
           printf 'keyPassword=%s\n' "$KEY_PASSWORD" >> android/keystore.properties
-
-          echo "Aliases present in keystore:"
-          keytool -list -keystore android/app/blastova-release.keystore \
-            -storepass "$STORE_PASSWORD" 2>/dev/null | grep -i "^blastova\|PrivateKeyEntry" || true
       
       - name: Build Android APK
         working-directory: ./android
