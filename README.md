@@ -2,6 +2,12 @@
 
 A cross-platform tower defense game built with **Electron** and **Phaser 3**.
 
+## Links
+
+- **Website (GitHub Pages):** https://kodekenobi.github.io/blastova/index.html
+  - Source: `/Users/mac/Desktop/Personal Work/Kode Kenobi Website/kodekenobi.github.io` (folder `blastova/`)
+- **Playable Game (Railway):** https://blastova-frontend-production.up.railway.app
+
 ## Features
 
 - **Classic Tower Defense Gameplay** - Place towers, defend against waves of enemies

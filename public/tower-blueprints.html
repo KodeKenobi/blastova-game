@@ -32,10 +32,10 @@
     }
 
     :root {
-      --bg: #040c1b;
-      --line: #5fd2ff;
-      --line-soft: rgba(95, 210, 255, 0.35);
-      --text: #ddf2ff;
+      --bg: #10140b;
+      --line: #8a9a5b;
+      --line-soft: rgba(138, 154, 91, 0.35);
+      --text: #e2dfc4;
     }
 
     * {
@@ -78,8 +78,8 @@
       z-index: 40;
       border: 0;
       border-radius: 0 0 8px 8px;
-      background: rgba(30, 71, 108, 0.96);
-      color: #f2fbff;
+      background: rgba(69, 82, 45, 0.96);
+      color: #e2dfc4;
       font-family: 'BlackOpsOne', sans-serif;
       font-size: 11px;
       font-weight: 700;
@@ -95,16 +95,16 @@
     }
 
     .standalone-close:hover {
-      background: rgba(39, 88, 133, 0.96);
+      background: rgba(88, 102, 58, 0.96);
     }
 
     .outer-frame {
       margin: 4px;
-      border: 2px solid rgba(191, 223, 245, 0.85);
-      background: linear-gradient(180deg, #2b4768, #1d3550);
+      border: 2px solid rgba(219, 225, 196, 0.85);
+      background: linear-gradient(180deg, #414c2c, #2c3420);
       border-radius: 20px;
       padding: 7px;
-      box-shadow: inset 0 0 0 2px rgba(82, 131, 166, 0.7), 0 8px 34px rgba(0, 0, 0, 0.4);
+      box-shadow: inset 0 0 0 2px rgba(138, 154, 91, 0.7), 0 8px 34px rgba(0, 0, 0, 0.4);
       position: relative;
       overflow: hidden;
     }
@@ -116,8 +116,8 @@
       top: 0;
       width: 250px;
       height: 26px;
-      border: 2px solid rgba(205, 231, 247, 0.8);
-      background: linear-gradient(180deg, #577896, #2f4e6f);
+      border: 2px solid rgba(219, 225, 196, 0.8);
+      background: linear-gradient(180deg, #6b7b42, #4d5a2f);
       clip-path: polygon(12% 0, 88% 0, 100% 100%, 0 100%);
       z-index: 4;
     }
@@ -134,8 +134,8 @@
       width: 100%;
       height: 100%;
       border-radius: 14px;
-      border: 2px solid rgba(95, 210, 255, 0.32);
-      background: linear-gradient(180deg, rgba(10, 24, 43, 0.96), rgba(5, 14, 28, 0.98));
+      border: 2px solid rgba(138, 154, 91, 0.32);
+      background: linear-gradient(180deg, rgba(26, 31, 18, 0.96), rgba(16, 20, 11, 0.98));
       display: grid;
       grid-template-columns: 2.15fr 1fr;
       gap: 10px;
@@ -158,8 +158,8 @@
       letter-spacing: 1px;
       font-size: 28px;
       text-transform: uppercase;
-      color: #96eaff;
-      text-shadow: 0 0 12px rgba(80, 214, 255, 0.3);
+      color: #b8c78a;
+      text-shadow: 0 0 12px rgba(138, 154, 91, 0.3);
     }
 
     .top-tabs {
@@ -169,25 +169,25 @@
     }
 
     .tab {
-      border: 2px solid rgba(103, 178, 232, 0.45);
+      border: 2px solid rgba(138, 154, 91, 0.45);
       border-radius: 8px;
-      background: linear-gradient(180deg, #1b395c, #122a46);
+      background: linear-gradient(180deg, #333c21, #262d18);
       min-height: 48px;
       display: grid;
       place-items: center;
       font-family: 'BlackOpsOne', sans-serif;
       font-size: 16px;
       letter-spacing: 0.7px;
-      color: #8cb6ce;
+      color: #a2a887;
       text-transform: uppercase;
       font-weight: 700;
     }
 
     .tab.active {
-      color: #d7f6ff;
-      border-color: rgba(146, 231, 255, 0.9);
-      background: linear-gradient(180deg, #2a5884, #18446a);
-      box-shadow: inset 0 0 0 1px rgba(190, 245, 255, 0.26);
+      color: #e2dfc4;
+      border-color: rgba(184, 199, 138, 0.9);
+      background: linear-gradient(180deg, #4d5a2f, #3a4423);
+      box-shadow: inset 0 0 0 1px rgba(219, 225, 196, 0.26);
       position: relative;
     }
 
@@ -199,13 +199,13 @@
       height: 0;
       border-left: 10px solid transparent;
       border-right: 10px solid transparent;
-      border-top: 10px solid #73dfff;
+      border-top: 10px solid #b8c78a;
     }
 
     .arena {
-      border: 2px solid rgba(97, 183, 241, 0.4);
+      border: 2px solid rgba(138, 154, 91, 0.4);
       border-radius: 12px;
-      background: linear-gradient(180deg, rgba(11, 29, 51, 0.85), rgba(8, 22, 40, 0.88));
+      background: linear-gradient(180deg, rgba(28, 34, 18, 0.85), rgba(22, 27, 14, 0.88));
       position: relative;
       overflow: hidden;
       min-height: 0;
@@ -217,9 +217,9 @@
       bottom: 8px;
       left: 8px;
       width: 246px;
-      border: 2px solid rgba(101, 187, 245, 0.37);
+      border: 2px solid rgba(138, 154, 91, 0.37);
       border-radius: 10px;
-      background: linear-gradient(180deg, rgba(20, 49, 78, 0.86), rgba(13, 35, 58, 0.9));
+      background: linear-gradient(180deg, rgba(42, 50, 27, 0.86), rgba(31, 38, 20, 0.9));
       padding: 8px;
       display: grid;
       grid-template-rows: 20px 1fr 20px;
@@ -264,24 +264,24 @@
     }
 
     .rail-card {
-      border: 2px solid rgba(108, 186, 238, 0.45);
+      border: 2px solid rgba(138, 154, 91, 0.45);
       border-radius: 10px;
-      background: linear-gradient(180deg, #22466f, #1a3a5f);
+      background: linear-gradient(180deg, #3c4628, #2c3420);
       min-height: 136px;
       padding: 10px;
       display: grid;
       grid-template-rows: 1fr auto;
       place-items: center;
-      color: #d8efff;
+      color: #e2dfc4;
       font-size: 21px;
       font-weight: 700;
       text-align: center;
     }
 
     .rail-card.selected {
-      border-color: #86e6ff;
-      background: linear-gradient(180deg, #2f6796, #24567f);
-      box-shadow: inset 0 0 0 1px rgba(195, 242, 255, 0.32);
+      border-color: #b8c78a;
+      background: linear-gradient(180deg, #55613a, #414c2c);
+      box-shadow: inset 0 0 0 1px rgba(219, 225, 196, 0.32);
     }
 
     .tiny-icon {
@@ -317,7 +317,7 @@
       position: absolute;
       inset: 0;
       z-index: 1;
-      background: #0b2038;
+      background: #1a2011;
     }
 
     .weapon-cloud {
@@ -328,7 +328,7 @@
       bottom: 24px;
       z-index: 2;
       overflow: hidden;
-      background: #0b2038;
+      background: #1a2011;
       display: flex;
       flex-direction: column;
       padding: 0;
@@ -341,7 +341,7 @@
       justify-content: space-between;
       gap: 16px;
       padding: 10px 16px 8px;
-      border-bottom: 1px solid rgba(108, 186, 238, 0.22);
+      border-bottom: 1px solid rgba(138, 154, 91, 0.22);
     }
 
     .carousel-heading {
@@ -381,7 +381,7 @@
       position: relative;
       border-radius: 14px;
       border: none;
-      background-color: #0b2038;
+      background-color: #1a2011;
       background-image: url('/assets/ground-shaker/ground_shaker_asset/Red/Weapons/weapons.png');
       background-repeat: no-repeat;
       background-size: 400% 400%;
@@ -413,7 +413,7 @@
     .slide-title {
       font-family: 'BlackOpsOne', sans-serif;
       font-size: 20px;
-      color: #e6fbff;
+      color: #e2dfc4;
       text-transform: uppercase;
       letter-spacing: 1px;
       margin-bottom: 4px;
@@ -445,10 +445,10 @@
 
     .carousel-prev,
     .carousel-next {
-      background: rgba(20, 60, 96, 0.9);
-      border: 1px solid rgba(108, 186, 238, 0.5);
+      background: rgba(45, 54, 30, 0.9);
+      border: 1px solid rgba(138, 154, 91, 0.5);
       border-radius: 8px;
-      color: #a8d8f0;
+      color: #b8c78a;
       font-size: 16px;
       width: 44px;
       height: 36px;
@@ -461,7 +461,7 @@
 
     .carousel-prev:hover,
     .carousel-next:hover {
-      background: rgba(35, 90, 138, 0.95);
+      background: rgba(69, 82, 45, 0.95);
     }
 
     .carousel-prev:disabled,
@@ -481,22 +481,22 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: rgba(108, 186, 238, 0.28);
-      border: 1px solid rgba(108, 186, 238, 0.5);
+      background: rgba(138, 154, 91, 0.28);
+      border: 1px solid rgba(138, 154, 91, 0.5);
       cursor: pointer;
       transition: background 150ms;
     }
 
     .carousel-dot.active {
-      background: #a8d8f0;
-      border-color: #a8d8f0;
+      background: #b8c78a;
+      border-color: #b8c78a;
     }
 
     .carousel-pos {
       flex-shrink: 0;
       font-family: 'BlackOpsOne', sans-serif;
       font-size: 14px;
-      color: #6ab5d8;
+      color: #97a86a;
       letter-spacing: 0.5px;
       text-align: right;
     }
@@ -506,15 +506,15 @@
     }
 
     .weapon-card {
-      border: 2px solid rgba(108, 186, 238, 0.45);
-      background: linear-gradient(180deg, rgba(11, 28, 48, 0.4), rgba(8, 20, 35, 0.52));
+      border: 2px solid rgba(138, 154, 91, 0.45);
+      background: linear-gradient(180deg, rgba(30, 36, 20, 0.4), rgba(22, 27, 15, 0.52));
       display: grid;
       grid-template-columns: 34px 1fr;
       gap: 8px;
       align-items: center;
-      color: #d8efff;
+      color: #e2dfc4;
       text-align: left;
-      background: #0b2038;
+      background: #1a2011;
       padding-left: 12px;
     }
 
@@ -522,9 +522,9 @@
       grid-column: 1 / -1;
       min-height: 92px;
       grid-template-columns: 58px 1fr;
-      background: linear-gradient(180deg, #2f6796, #24567f);
-      border-color: #86e6ff;
-      box-shadow: inset 0 0 0 1px rgba(195, 242, 255, 0.32);
+      background: linear-gradient(180deg, #55613a, #414c2c);
+      border-color: #b8c78a;
+      box-shadow: inset 0 0 0 1px rgba(219, 225, 196, 0.32);
       padding-left: 14px;
     }
 
@@ -532,8 +532,8 @@
       width: 30px;
       height: 30px;
       border-radius: 8px;
-      border: 1px solid rgba(157, 228, 255, 0.55);
-      background-color: #0b2038;
+      border: 1px solid rgba(198, 209, 163, 0.55);
+      background-color: #1a2011;
       background-image: url('/assets/ground-shaker/ground_shaker_asset/Red/Weapons/weapons.png');
       background-repeat: no-repeat;
       background-size: 400% 400%;
@@ -594,7 +594,7 @@
       font-family: 'BlackOpsOne', sans-serif;
       font-size: 18px;
       text-transform: uppercase;
-      color: #e6fbff;
+      color: #e2dfc4;
       letter-spacing: 0.8px;
       margin-bottom: 2px;
     }
@@ -629,26 +629,26 @@
 
     .weapon-meta {
       font-size: 9px;
-      color: #7fb8d5;
+      color: #a2a887;
       line-height: 1.05;
       margin-top: 1px;
     }
 
     .power-grid {
       margin-top: 12px;
-      border: 2px solid rgba(109, 207, 255, 0.46);
+      border: 2px solid rgba(138, 154, 91, 0.46);
       border-radius: 10px;
-      background: rgba(16, 38, 63, 0.9);
+      background: rgba(30, 37, 20, 0.9);
       width: 100%;
       padding: 8px 10px;
-      color: #b8d9f0;
+      color: #cdc9ad;
       font-size: 14px;
       font-weight: 700;
       text-transform: uppercase;
     }
 
     .power-grid .p-title {
-      color: #82deff;
+      color: #b8c78a;
       font-family: 'BlackOpsOne', sans-serif;
       font-size: 16px;
       margin-bottom: 5px;
@@ -663,12 +663,12 @@
 
     .power-bars span {
       height: 10px;
-      border: 1px solid rgba(121, 194, 235, 0.5);
-      background: rgba(16, 51, 78, 0.85);
+      border: 1px solid rgba(138, 154, 91, 0.5);
+      background: rgba(35, 42, 24, 0.85);
     }
 
     .power-bars span.live {
-      background: linear-gradient(180deg, #7af3ff, #2fa4cf);
+      background: linear-gradient(180deg, #b8c78a, #7d8f4e);
     }
 
     .power-bars span.warn {
@@ -693,9 +693,9 @@
 
     .detail-panel,
     .manage-panel {
-      border: 2px solid rgba(111, 192, 243, 0.4);
+      border: 2px solid rgba(138, 154, 91, 0.4);
       border-radius: 14px;
-      background: linear-gradient(180deg, rgba(17, 39, 68, 0.92), rgba(11, 26, 46, 0.94));
+      background: linear-gradient(180deg, rgba(34, 41, 22, 0.92), rgba(24, 30, 16, 0.94));
       padding: 10px;
       position: relative;
       overflow: hidden;
@@ -705,7 +705,7 @@
       overflow-y: auto;
       overflow-x: hidden;
       scrollbar-width: thin;
-      scrollbar-color: rgba(95, 210, 255, 0.4) transparent;
+      scrollbar-color: rgba(138, 154, 91, 0.4) transparent;
     }
 
     .detail-panel::before,
@@ -713,7 +713,7 @@
       content: '';
       position: absolute;
       inset: 6px;
-      border: 1px solid rgba(106, 190, 240, 0.16);
+      border: 1px solid rgba(138, 154, 91, 0.16);
       border-radius: 10px;
       pointer-events: none;
     }
@@ -750,7 +750,7 @@
       font-family: 'BlackOpsOne', sans-serif;
       text-transform: uppercase;
       font-size: 39px;
-      color: #8fe7ff;
+      color: #b8c78a;
       letter-spacing: 1px;
       margin-bottom: 8px;
       line-height: 1;
@@ -758,7 +758,7 @@
 
     .d-sub {
       text-align: center;
-      color: #75d8f5;
+      color: #97a86a;
       font-family: 'BlackOpsOne', sans-serif;
       text-transform: uppercase;
       font-size: 14px;
@@ -767,9 +767,9 @@
     }
 
     .detail-body {
-      border: 1px solid rgba(108, 196, 248, 0.2);
+      border: 1px solid rgba(138, 154, 91, 0.2);
       border-radius: 10px;
-      background: rgba(10, 21, 39, 0.45);
+      background: rgba(26, 32, 17, 0.45);
       padding: 10px;
       display: grid;
       grid-template-columns: 1fr;
@@ -790,7 +790,7 @@
     .weapon-name {
       font-size: 37px;
       font-weight: 700;
-      color: #96dfff;
+      color: #c6d1a3;
       line-height: 1;
       margin-bottom: 8px;
     }
@@ -802,7 +802,7 @@
       align-items: center;
       margin-bottom: 6px;
       font-size: 18px;
-      color: #d6ecff;
+      color: #d8d5ba;
       font-weight: 700;
     }
 
@@ -825,9 +825,9 @@
       width: 36px;
       height: 24px;
       border-radius: 7px;
-      border: 1px solid rgba(117, 206, 248, 0.7);
-      background: linear-gradient(180deg, #2a638c, #1b425f);
-      color: #ddf3ff;
+      border: 1px solid rgba(138, 154, 91, 0.7);
+      background: linear-gradient(180deg, #4a5630, #333c21);
+      color: #e2dfc4;
       font-family: 'BlackOpsOne', sans-serif;
       font-size: 15px;
       font-weight: 700;
@@ -844,19 +844,19 @@
     .bar {
       height: 9px;
       border-radius: 10px;
-      border: 1px solid rgba(115, 195, 241, 0.55);
-      background: rgba(18, 46, 72, 0.8);
+      border: 1px solid rgba(138, 154, 91, 0.55);
+      background: rgba(35, 42, 24, 0.8);
       overflow: hidden;
       position: relative;
     }
 
     .detail-body {
-      --tier-main-start: #5be6ff;
-      --tier-main-end: #9af5ff;
-      --tier-main-glow: rgba(122, 237, 255, 0.55);
-      --tier-aoe-start: #efad5a;
-      --tier-aoe-end: #ffd189;
-      --tier-aoe-glow: rgba(255, 196, 123, 0.45);
+      --tier-main-start: #7d8f4e;
+      --tier-main-end: #b8c78a;
+      --tier-main-glow: rgba(168, 183, 122, 0.55);
+      --tier-aoe-start: #b3812f;
+      --tier-aoe-end: #d8b46a;
+      --tier-aoe-glow: rgba(201, 162, 39, 0.45);
     }
 
     .bar > span {
@@ -887,12 +887,12 @@
     }
 
     .detail-body.preview-tier-1 {
-      --tier-main-start: #5be6ff;
-      --tier-main-end: #9af5ff;
-      --tier-main-glow: rgba(122, 237, 255, 0.55);
-      --tier-aoe-start: #efad5a;
-      --tier-aoe-end: #ffd189;
-      --tier-aoe-glow: rgba(255, 196, 123, 0.45);
+      --tier-main-start: #7d8f4e;
+      --tier-main-end: #b8c78a;
+      --tier-main-glow: rgba(168, 183, 122, 0.55);
+      --tier-aoe-start: #b3812f;
+      --tier-aoe-end: #d8b46a;
+      --tier-aoe-glow: rgba(201, 162, 39, 0.45);
     }
 
     .detail-body.preview-tier-2 {
@@ -928,7 +928,7 @@
 
     .stat-delta {
       text-align: right;
-      color: #9ce8ff;
+      color: #b0b894;
       font-size: 14px;
       font-family: 'BlackOpsOne', sans-serif;
       letter-spacing: 0.2px;
@@ -944,10 +944,10 @@
     .tier-summary {
       margin-top: 10px;
       border: none;
-      border-top: 1px solid rgba(126, 214, 252, 0.24);
+      border-top: 1px solid rgba(138, 154, 91, 0.24);
       border-radius: 8px;
       padding: 8px 0 0;
-      color: #c9f0ff;
+      color: #cdc9ad;
       font-size: 13px;
       line-height: 1.3;
       background: transparent;
@@ -964,9 +964,9 @@
       -ms-overflow-style: none;
       gap: 7px;
       padding: 8px;
-      border: 1px solid rgba(126, 214, 252, 0.35);
+      border: 1px solid rgba(138, 154, 91, 0.35);
       border-radius: 8px;
-      background: rgba(12, 34, 56, 0.7);
+      background: rgba(30, 37, 20, 0.7);
     }
 
     .turret-preview-strip::-webkit-scrollbar {
@@ -978,9 +978,9 @@
     .turret-preview-card {
       flex: 0 0 42%;
       min-width: 104px;
-      border: 1px solid rgba(122, 192, 232, 0.38);
+      border: 1px solid rgba(138, 154, 91, 0.38);
       border-radius: 7px;
-      background: rgba(8, 25, 41, 0.82);
+      background: rgba(24, 30, 16, 0.82);
       padding: 5px;
       display: flex;
       flex-direction: column;
@@ -990,8 +990,8 @@
     }
 
     .turret-preview-card.unlocked {
-      border-color: rgba(152, 236, 255, 0.72);
-      box-shadow: inset 0 0 0 1px rgba(186, 246, 255, 0.2);
+      border-color: rgba(184, 199, 138, 0.72);
+      box-shadow: inset 0 0 0 1px rgba(219, 225, 196, 0.2);
     }
 
     .turret-preview-card.current {
@@ -1013,8 +1013,8 @@
       width: 64px;
       height: 64px;
       border-radius: 6px;
-      border: 1px solid rgba(110, 182, 224, 0.4);
-      background: radial-gradient(circle at 50% 38%, rgba(63, 117, 156, 0.42), rgba(8, 25, 41, 0.9) 72%);
+      border: 1px solid rgba(138, 154, 91, 0.4);
+      background: radial-gradient(circle at 50% 38%, rgba(90, 104, 58, 0.42), rgba(24, 30, 16, 0.9) 72%);
       position: relative;
       overflow: hidden;
     }
@@ -1070,7 +1070,7 @@
 
     .mk-lbl {
       font-size: 14px;
-      color: #8eaec6;
+      color: #a2a887;
       font-weight: 700;
       white-space: nowrap;
       text-align: center;
@@ -1081,18 +1081,18 @@
       width: 100%;
       height: 12px;
       border-radius: 999px;
-      border: 1px solid rgba(111, 196, 246, 0.42);
+      border: 1px solid rgba(138, 154, 91, 0.42);
       clip-path: none;
-      background: linear-gradient(180deg, #1f4b74, #17395f);
+      background: linear-gradient(180deg, #3c4628, #2c3420);
       position: relative;
       overflow: hidden;
       cursor: pointer;
     }
 
     .ribbon.active {
-      border-color: rgba(136, 236, 255, 0.95);
-      background: linear-gradient(180deg, #2f7aa4, #245b87);
-      box-shadow: inset 0 0 0 1px rgba(196, 250, 255, 0.4), 0 0 14px rgba(122, 230, 255, 0.4);
+      border-color: rgba(184, 199, 138, 0.95);
+      background: linear-gradient(180deg, #6b7b42, #55613a);
+      box-shadow: inset 0 0 0 1px rgba(219, 225, 196, 0.4), 0 0 14px rgba(168, 183, 122, 0.4);
     }
 
     .ribbon.selected {
@@ -1107,7 +1107,7 @@
       border-radius: 999px;
       border: none;
       transform: none;
-      background: linear-gradient(90deg, rgba(205, 226, 242, 0.32), rgba(205, 226, 242, 0.08));
+      background: linear-gradient(90deg, rgba(219, 225, 196, 0.32), rgba(219, 225, 196, 0.08));
     }
 
     .ribbon.locked::after {
@@ -1283,18 +1283,18 @@
     }
 
     .evolve-panel .hint {
-      color: #d7f3ff;
+      color: #d8d5ba;
       font-size: 14px;
     }
 
     .icon-tuner {
       margin-top: 10px;
-      border: 1px solid rgba(125, 203, 245, 0.35);
+      border: 1px solid rgba(138, 154, 91, 0.35);
       border-radius: 10px;
-      background: rgba(8, 24, 43, 0.72);
+      background: rgba(24, 29, 16, 0.72);
       padding: 8px 10px;
       text-align: left;
-      color: #bfe7ff;
+      color: #cdc9ad;
       font-family: 'BlackOpsOne', sans-serif;
       line-height: 1.3;
     }
@@ -1315,7 +1315,7 @@
     .icon-tuner-title {
       font-size: 12px;
       letter-spacing: 0.9px;
-      color: #9edfff;
+      color: #b8c78a;
       margin-bottom: 4px;
       cursor: move;
       user-select: none;
@@ -1341,15 +1341,15 @@
     .icon-step-value {
       text-align: center;
       font-size: 11px;
-      color: #d7f3ff;
+      color: #d8d5ba;
       line-height: 1;
     }
 
     .icon-step-btn {
-      border: 1px solid rgba(125, 203, 245, 0.55);
+      border: 1px solid rgba(138, 154, 91, 0.55);
       border-radius: 6px;
-      background: rgba(33, 91, 129, 0.55);
-      color: #e0f3ff;
+      background: rgba(74, 86, 48, 0.55);
+      color: #e2dfc4;
       font-family: 'BlackOpsOne', sans-serif;
       font-size: 12px;
       line-height: 1;
@@ -1365,10 +1365,10 @@
 
     .icon-tuner-btn {
       flex: 1 1 0;
-      border: 1px solid rgba(125, 203, 245, 0.55);
+      border: 1px solid rgba(138, 154, 91, 0.55);
       border-radius: 7px;
-      background: rgba(33, 91, 129, 0.55);
-      color: #e0f3ff;
+      background: rgba(74, 86, 48, 0.55);
+      color: #e2dfc4;
       font-family: 'BlackOpsOne', sans-serif;
       font-size: 11px;
       letter-spacing: 0.4px;
@@ -1383,7 +1383,7 @@
     .icon-tuner-status {
       margin-top: 4px;
       font-size: 10px;
-      color: #d7f3ff;
+      color: #d8d5ba;
       min-height: 13px;
     }
 
@@ -1392,9 +1392,9 @@
       width: 100%;
       min-height: 44px;
       border-radius: 7px;
-      border: 1px solid rgba(128, 203, 240, 0.45);
-      background: rgba(6, 16, 28, 0.85);
-      color: #d5ecff;
+      border: 1px solid rgba(138, 154, 91, 0.45);
+      background: rgba(18, 22, 12, 0.85);
+      color: #d8d5ba;
       font-family: 'Teko', sans-serif;
       font-size: 10px;
       padding: 6px;
@@ -1409,12 +1409,12 @@
     .tune-quick {
       margin-top: 10px;
       border: none;
-      border-top: 1px solid rgba(125, 203, 245, 0.22);
+      border-top: 1px solid rgba(138, 154, 91, 0.22);
       border-radius: 10px;
       background: transparent;
       padding: 8px 0 0;
       text-align: center;
-      color: #bfe7ff;
+      color: #cdc9ad;
       font-family: 'BlackOpsOne', sans-serif;
       line-height: 1.3;
     }
@@ -1422,13 +1422,13 @@
     .tune-quick-title {
       font-size: 12px;
       letter-spacing: 0.9px;
-      color: #9edfff;
+      color: #b8c78a;
       margin-bottom: 2px;
     }
 
     .tune-quick-line {
       font-size: 13px;
-      color: #d8f2ff;
+      color: #d8d5ba;
     }
 
     .tune-quick-line.tune-spent {
@@ -1444,18 +1444,18 @@
     .tune-quick-status {
       margin-top: 3px;
       font-size: 12px;
-      color: #d7f3ff;
+      color: #d8d5ba;
     }
 
     .levelup-conditions {
       margin-top: 8px;
       border: none;
-      border-top: 1px solid rgba(125, 203, 245, 0.24);
+      border-top: 1px solid rgba(138, 154, 91, 0.24);
       border-radius: 10px;
       background: transparent;
       padding: 7px 0 0;
       text-align: center;
-      color: #bfe7ff;
+      color: #cdc9ad;
       font-family: 'BlackOpsOne', sans-serif;
       font-size: 14px;
       line-height: 1.35;
@@ -1464,7 +1464,7 @@
     .tier-feedback {
       margin-top: 6px;
       text-transform: uppercase;
-      color: #9fe8ff;
+      color: #b8c78a;
       letter-spacing: 0.7px;
       min-height: 16px;
     }
@@ -1965,7 +1965,7 @@
         border-radius: 999px;
         clip-path: none;
         border-width: 1px;
-        background: linear-gradient(180deg, #1f4b74, #17395f);
+        background: linear-gradient(180deg, #3c4628, #2c3420);
       }
 
       .ribbon::before {
@@ -1975,7 +1975,7 @@
         border-radius: 999px;
         border: none;
         transform: none;
-        background: linear-gradient(90deg, rgba(205, 226, 242, 0.32), rgba(205, 226, 242, 0.08));
+        background: linear-gradient(90deg, rgba(219, 225, 196, 0.32), rgba(219, 225, 196, 0.08));
       }
 
       .ribbon.locked {
@@ -1989,7 +1989,7 @@
       }
 
       .ribbon.active {
-        box-shadow: inset 0 0 0 1px rgba(196, 250, 255, 0.35), 0 0 8px rgba(122, 230, 255, 0.35);
+        box-shadow: inset 0 0 0 1px rgba(219, 225, 196, 0.35), 0 0 8px rgba(168, 183, 122, 0.35);
       }
 
       .ribbon.selected {
@@ -2212,9 +2212,9 @@
         width: min(220px, calc(100vw - 16px));
         max-height: 40vh;
         padding: 6px 8px;
-        border: 1px solid rgba(125, 203, 245, 0.35);
+        border: 1px solid rgba(138, 154, 91, 0.35);
         border-radius: 10px;
-        background: rgba(8, 24, 43, 0.92);
+        background: rgba(24, 29, 16, 0.92);
       }
 
       .icon-tuner-title {
@@ -2504,7 +2504,7 @@
 
         const grad = ctx.createRadialGradient(w * 0.72, h * 0.36, 8, w * 0.72, h * 0.36, Math.max(w, h) * 0.24);
         grad.addColorStop(0, 'rgba(255, 213, 122, 0.9)');
-        grad.addColorStop(0.16, 'rgba(98, 216, 255, 0.26)');
+        grad.addColorStop(0.16, 'rgba(168, 183, 122, 0.26)');
         grad.addColorStop(1, 'rgba(4, 12, 27, 0)');
         ctx.fillStyle = grad;
         ctx.beginPath();
@@ -4344,7 +4344,7 @@
         labels.forEach((label) => {
           const idxTier = Number(label.getAttribute('data-tier-label') || 1);
           label.textContent = (isTurretUpgradeContext ? 'MK ' : 'Tier ') + idxTier;
-          label.style.color = idxTier === displayedTier ? '#fff2a6' : '#8eaec6';
+          label.style.color = idxTier === displayedTier ? '#fff2a6' : '#a2a887';
         });
       }
 

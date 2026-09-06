@@ -3,8 +3,12 @@
 ## Project Paths
 
 - **Game Repository:** `/Users/mac/Desktop/Personal Work/PC/Project-One-Update`
-- **Website Folder:** `/Users/mac/Desktop/Personal Work/Websites/blastova`
-- **Live URL:** https://blastova-frontend-production.up.railway.app
+- **Website Folder (source of truth for the live site):** `/Users/mac/Desktop/Personal Work/Kode Kenobi Website/kodekenobi.github.io`
+- **Website Scratch Folder (local only, NOT deployed):** `/Users/mac/Desktop/Personal Work/Websites/blastova`
+- **Live Website (GitHub Pages):** https://kodekenobi.github.io/blastova/index.html
+- **Live Game (Railway):** https://blastova-frontend-production.up.railway.app
+
+> Website changes must be made in the `kodekenobi.github.io` folder under `blastova/`. Edits to `Websites/blastova` do not reach the live site.
 
 ## Quick Commands
 
@@ -83,7 +87,7 @@ DEBUG_FLAGS = {
 
 ## Website Structure
 
-The website in `/Users/mac/Desktop/Personal Work/Websites/blastova` serves as the landing/distribution point for:
+The site lives in `/Users/mac/Desktop/Personal Work/Kode Kenobi Website/kodekenobi.github.io` under `blastova/` and is published via GitHub Pages at https://kodekenobi.github.io/blastova/index.html. It serves as the landing/distribution point for:
 - Download links to DMG/APK releases
 - Game documentation
 - Patch notes & updates
