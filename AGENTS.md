@@ -2,7 +2,7 @@
 
 ## Project Paths
 
-- **Game Repository:** `/Users/mac/Desktop/Personal Work/PC/Project-One-Update`
+- **Game Repository:** `/Users/mac/Desktop/Personal Work/PC/blastova-game`
 - **Website Folder (source of truth for the live site):** `/Users/mac/Desktop/Personal Work/Kode Kenobi Website/kodekenobi.github.io`
 - **Website Scratch Folder (local only, NOT deployed):** `/Users/mac/Desktop/Personal Work/Websites/blastova`
 - **Live Website (GitHub Pages):** https://kodekenobi.github.io/blastova/index.html

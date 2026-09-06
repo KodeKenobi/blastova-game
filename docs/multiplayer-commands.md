@@ -3,7 +3,7 @@
 All commands below are run from:
 
 ```bash
-cd "/Users/mac/Desktop/Personal Work/PC/Project-One-Update"
+cd "/Users/mac/Desktop/Personal Work/PC/blastova-game"
 ```
 
 ## 1) First-time setup
@@ -100,13 +100,13 @@ wss://blastova-matchmaker-production.up.railway.app
 Wrong (causes `exit 126`):
 
 ```bash
-"/Users/mac/Desktop/Personal Work/PC/Project-One-Update" && railway up ...
+"/Users/mac/Desktop/Personal Work/PC/blastova-game" && railway up ...
 ```
 
 Correct:
 
 ```bash
-cd "/Users/mac/Desktop/Personal Work/PC/Project-One-Update" && railway up ...
+cd "/Users/mac/Desktop/Personal Work/PC/blastova-game" && railway up ...
 ```
 
 ## 8) Optional reset if browser had stale matchmaking flags

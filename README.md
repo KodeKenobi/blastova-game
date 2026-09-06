@@ -77,7 +77,7 @@ npm run electron:build
 
 ## Project Locations
 
-- **Game Source:** `/Users/mac/Desktop/Personal Work/PC/Project-One-Update`
+- **Game Source:** `/Users/mac/Desktop/Personal Work/PC/blastova-game`
 - **Website Folder:** `/Users/mac/Desktop/Personal Work/Websites/blastova`
 - **Web Deploy:** https://blastova-frontend-production.up.railway.app (Railway)
 
