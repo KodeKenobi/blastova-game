@@ -41,10 +41,41 @@ npm run start                 # Serve dist/ via Vite
 npm run preview:prod-local    # Preview production build locally
 ```
 
-## Release Artifacts Location
+## Releases
 
-- **macOS:** `dist/Blastova-1.0.0-arm64.dmg` (206 MB)
-- **Android:** `release-artifacts/Blastova-1.0.0-release.apk` (87 MB)
+Releases are built by CI only — do not build or upload artifacts by hand. Local
+`electron-builder` runs on Apple Silicon produce arm64 binaries, which do not run
+on ordinary Windows/Linux machines.
+
+```bash
+# 1. bump the version in BOTH files (they must match, CI enforces it)
+#    package.json            -> "version"
+#    android/app/build.gradle -> versionName
+# 2. tag and push
+git tag vX.Y.Z && git push origin vX.Y.Z
+```
+
+`.github/workflows/build-release.yml` then builds macOS, Windows, Linux and
+Android on native runners and publishes one GitHub release:
+
+| Platform | Asset |
+| --- | --- |
+| macOS | `Blastova-mac-arm64.dmg` |
+| Windows | `Blastova-win-x64.exe` |
+| Linux | `Blastova-linux-x86_64.AppImage` |
+| Android | `app-release.apk` (signed, signature verified in CI) |
+
+The website links to `releases/latest/download/<asset>`, so it follows new
+releases automatically with no HTML changes.
+
+### Android signing
+
+CI reconstructs the keystore from repository secrets: `ANDROID_KEYSTORE_BASE64`,
+`ANDROID_STORE_PASSWORD`, `ANDROID_KEY_ALIAS`, `ANDROID_KEY_PASSWORD`.
+
+> `android/app/blastova-release.keystore` is untracked and irreplaceable. If it is
+> lost, no future update can be published under the same Android app ID. Keep an
+> offsite backup of the file and its passwords.
 
 ## Key Config Files
 
@@ -95,7 +126,5 @@ The site lives in `/Users/mac/Desktop/Personal Work/Kode Kenobi Website/kodekeno
 
 ## Next Actions
 
-- Set up GitHub Actions CI/CD for auto-building releases
-- Configure GitHub Releases with DMG/APK files
-- Create download landing page on website
 - Set up DNS/domain configuration for web deployment
+- Code-sign and notarize the macOS build (currently unsigned)
