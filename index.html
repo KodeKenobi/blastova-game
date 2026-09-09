@@ -267,24 +267,38 @@
           var install = document.getElementById('app-update-install');
           var dismiss = document.getElementById('app-update-dismiss');
           if (!modal || !title || !message || !install || !dismiss) return;
-          modal.style.display = 'flex';
-          title.textContent = 'CHECKING FOR UPDATES';
-          message.textContent = 'Checking the Blastova release channel...';
-          install.style.display = 'none';
-          dismiss.textContent = 'CLOSE';
+          // Automatic (non-manual) checks run silently in the background — showing the
+          // full-screen "checking" modal on every launch reads as a frozen app whenever the
+          // network is slow, and a hung fetch() with no timeout could block it forever.
+          if (manual) {
+            modal.style.display = 'flex';
+            title.textContent = 'CHECKING FOR UPDATES';
+            message.textContent = 'Checking the Blastova release channel...';
+            install.style.display = 'none';
+            dismiss.textContent = 'CLOSE';
+          }
+          var fetchWithTimeout = function(resource, options, timeoutMs) {
+            var controller = new AbortController();
+            var timer = setTimeout(function() { controller.abort(); }, timeoutMs);
+            return fetch(resource, Object.assign({}, options, { signal: controller.signal }))
+              .finally(function() { clearTimeout(timer); });
+          };
           try {
             if (window.BlastovaDesktopUpdater) {
               var desktopResult = await window.BlastovaDesktopUpdater.check();
               if (desktopResult?.unsupported) {
+                if (!manual) return;
                 title.textContent = 'DEVELOPMENT BUILD';
                 message.textContent = 'Desktop updates are available in packaged release builds.';
                 return;
               }
               if (desktopResult?.available) {
+                modal.style.display = 'flex';
                 title.textContent = 'UPDATE AVAILABLE';
                 message.textContent = 'Blastova ' + desktopResult.version + ' is ready to download.';
                 install.textContent = 'UPDATE NOW';
                 install.style.display = '';
+                dismiss.textContent = 'CLOSE';
                 install.onclick = async function() {
                   install.style.display = 'none';
                   dismiss.style.display = 'none';
@@ -306,39 +320,37 @@
                 };
                 return;
               }
-              if (!manual) {
-                window.__closeAppUpdateModal();
-                return;
-              }
+              if (!manual) return;
               title.textContent = 'UP TO DATE';
               message.textContent = 'Blastova ' + (desktopResult?.currentVersion || 'current') + ' is the latest release.';
               return;
             }
             if (!window.BlastovaUpdater) {
+              if (!manual) return;
               title.textContent = 'UPDATES UNAVAILABLE';
               message.textContent = 'Update installation is available from the packaged app.';
               return;
             }
             var currentVersion = window.BlastovaUpdater.getVersionName();
-            var response = await fetch('https://api.github.com/repos/KodeKenobi/blastova-game/releases/latest', { headers: { Accept: 'application/vnd.github+json' } });
+            var response = await fetchWithTimeout('https://api.github.com/repos/KodeKenobi/blastova-game/releases/latest', { headers: { Accept: 'application/vnd.github+json' } }, 8000);
             if (!response.ok) throw new Error('release check failed');
             var release = await response.json();
             var apk = Array.isArray(release.assets) ? release.assets.find((asset) => asset.name === 'app-release.apk') : null;
             var latestVersion = String(release.tag_name || '').replace(/^v/i, '');
             if (!apk?.browser_download_url || !latestVersion || compareVersions(latestVersion, currentVersion) <= 0) {
-              if (!manual) {
-                window.__closeAppUpdateModal();
-                return;
-              }
+              if (!manual) return;
               title.textContent = 'UP TO DATE';
               message.textContent = 'Blastova ' + currentVersion + ' is the latest release.';
               return;
             }
+            modal.style.display = 'flex';
             title.textContent = 'UPDATE AVAILABLE';
             message.textContent = 'Blastova ' + latestVersion + ' is ready to download.';
             install.style.display = '';
+            dismiss.textContent = 'CLOSE';
             install.onclick = function() { window.BlastovaUpdater.downloadAndInstall(apk.browser_download_url); window.__closeAppUpdateModal(); };
           } catch (_) {
+            if (!manual) return;
             title.textContent = 'CHECK FAILED';
             message.textContent = 'The release channel could not be reached. Try again later.';
           }

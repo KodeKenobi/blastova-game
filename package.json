@@ -1,6 +1,6 @@
 {
   "name": "tower-defense-game",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Blastova: The Last Wave - A cross-platform tower defense game built with Electron and Phaser 3",
   "main": "electron/main-cjs.js",
   "homepage": "./",
