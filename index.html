@@ -896,7 +896,10 @@
       var MIN_SPLASH_MS = 700;
 
       window.__dismissSplash = function() {
+        if (window.__splashDismissed) return;
+        window.__splashDismissed = true;
         clearInterval(turretTimer);
+        clearTimeout(splashWatchdog);
         var splash = document.getElementById('app-splash');
         if (!splash) return;
         var elapsed = Date.now() - splashShownAt;
@@ -906,6 +909,15 @@
           setTimeout(function() { splash && splash.remove(); }, 520);
         }, delay);
       };
+
+      // A failed or stalled game bootstrap must not leave the native app on an
+      // unrecoverable splash screen. Normal scene startup dismisses this much sooner.
+      var splashWatchdog = setTimeout(function() {
+        if (window.__tdScene && typeof window.__showWorldSelect === 'function') {
+          window.__showWorldSelect();
+        }
+        window.__dismissSplash();
+      }, 12000);
     })();
     </script>
 

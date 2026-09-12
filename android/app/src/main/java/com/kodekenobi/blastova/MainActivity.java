@@ -11,7 +11,6 @@ import android.os.Environment;
 import android.os.Build;
 import android.os.Bundle;
 import android.webkit.JavascriptInterface;
-import android.webkit.WebView;
 import android.content.Intent;
 import android.view.View;
 import android.view.WindowManager;
@@ -27,7 +26,7 @@ public class MainActivity extends BridgeActivity {
     public void onCreate(Bundle savedInstanceState) {
         // Disable activity animation to prevent splash from resizing/moving.
         overridePendingTransition(0, 0);
-        
+
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().setWindowAnimations(0);
