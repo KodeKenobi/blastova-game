@@ -43,16 +43,18 @@ npm run preview:prod-local    # Preview production build locally
 
 ## Releases
 
-Releases are built by CI only — do not build or upload artifacts by hand. Local
-`electron-builder` runs on Apple Silicon produce arm64 binaries, which do not run
-on ordinary Windows/Linux machines.
+Releases are built by CI only — do not build or upload artifacts by hand. Pushes
+to `main` build all platform artifacts and publish the version from
+`package.json` as the latest GitHub release. Local `electron-builder` runs on
+Apple Silicon produce arm64 binaries, which do not run on ordinary
+Windows/Linux machines.
 
 ```bash
 # 1. bump the version in BOTH files (they must match, CI enforces it)
 #    package.json            -> "version"
 #    android/app/build.gradle -> versionName
-# 2. tag and push
-git tag vX.Y.Z && git push origin vX.Y.Z
+# 2. commit and push main; CI creates the matching vX.Y.Z release
+git push origin main
 ```
 
 `.github/workflows/build-release.yml` then builds macOS, Windows, Linux and
