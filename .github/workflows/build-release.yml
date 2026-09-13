@@ -268,16 +268,7 @@ jobs:
           emulator-options: -no-window -no-audio -no-boot-anim -gpu swiftshader_indirect -accel on
           disable-linux-hw-acceleration: false
           disable-animations: true
-          script: |
-            set +e
-            sh scripts/android-release-smoke.sh android-artifacts/app-release.apk
-            smoke_exit_code=$?
-            if [ "$smoke_exit_code" -ne 0 ]; then
-              adb logcat -d -t 4000 > android-smoke-logcat.txt || true
-              adb exec-out screencap -p > android-smoke-screen.png || true
-              adb shell dumpsys activity activities > android-smoke-activities.txt || true
-            fi
-            exit "$smoke_exit_code"
+          script: SMOKE_DIAGNOSTICS_DIR="$GITHUB_WORKSPACE/android-smoke-diagnostics" sh scripts/android-release-smoke.sh android-artifacts/app-release.apk
 
       - name: Upload Android smoke-test diagnostics
         if: failure()
@@ -285,10 +276,7 @@ jobs:
         with:
           name: android-smoke-test-diagnostics
           retention-days: 30
-          path: |
-            android-smoke-logcat.txt
-            android-smoke-screen.png
-            android-smoke-activities.txt
+          path: android-smoke-diagnostics/
 
   create-release:
     needs: [check-version, build-macos, build-windows, build-linux, build-android, smoke-test-android]
