@@ -254,7 +254,7 @@ jobs:
 
       - name: Enable Android emulator acceleration
         run: |
-          sudo chown "$USER" /dev/kvm
+          sudo chmod 666 /dev/kvm
           test -r /dev/kvm
           test -w /dev/kvm
 
@@ -265,7 +265,8 @@ jobs:
           target: google_apis
           arch: x86_64
           profile: pixel_2
-          emulator-options: -no-window -no-audio -no-boot-anim -gpu swiftshader_indirect
+          emulator-options: -no-window -no-audio -no-boot-anim -gpu swiftshader_indirect -accel on
+          disable-linux-hw-acceleration: false
           disable-animations: true
           script: |
             set +e
