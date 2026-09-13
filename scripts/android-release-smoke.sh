@@ -14,7 +14,9 @@ capture_diagnostics() {
 
 adb install "$apk_path"
 adb logcat -c
+adb shell settings put secure immersive_mode_confirmations confirmed || true
 adb shell am start -n com.kodekenobi.blastova/.MainActivity
+adb shell input keyevent KEYCODE_ENTER || true
 
 attempt=0
 while [ "$attempt" -lt 90 ]; do
