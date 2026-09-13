@@ -62,5 +62,15 @@ if (mount) {
     window.__tdScene.showWorldSelectionSplashScreen?.();
   }
 
-  window.BlastovaStartup?.worldSelectionReady?.();
+  const reportWorldSelectionReady = () => {
+    if (typeof window.BlastovaStartup?.worldSelectionReady !== 'function') return false;
+    window.BlastovaStartup.worldSelectionReady();
+    return true;
+  };
+  if (!reportWorldSelectionReady()) {
+    const readinessTimer = window.setInterval(() => {
+      if (reportWorldSelectionReady()) window.clearInterval(readinessTimer);
+    }, 250);
+    window.setTimeout(() => window.clearInterval(readinessTimer), 10000);
+  }
 }
