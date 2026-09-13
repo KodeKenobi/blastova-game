@@ -11,6 +11,10 @@ on:
 permissions:
   contents: write
 
+env:
+  VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+  VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+
 jobs:
   # Fails the run before anything builds if package.json and Android versionName disagree.
   check-version:
@@ -59,6 +63,11 @@ jobs:
       
       - name: Install dependencies
         run: npm ci
+
+      - name: Verify public client build configuration
+        run: |
+          test -n "$VITE_SUPABASE_URL" || { echo "::error::VITE_SUPABASE_URL secret is required for release builds."; exit 1; }
+          test -n "$VITE_SUPABASE_ANON_KEY" || { echo "::error::VITE_SUPABASE_ANON_KEY secret is required for release builds."; exit 1; }
       
       - name: Build macOS DMG
         run: npm run ensure:electron && npm run build && npx electron-builder --mac dmg --publish never
@@ -85,6 +94,11 @@ jobs:
       
       - name: Install dependencies
         run: npm ci
+
+      - name: Verify public client build configuration
+        run: |
+          test -n "$VITE_SUPABASE_URL" || { echo "::error::VITE_SUPABASE_URL secret is required for release builds."; exit 1; }
+          test -n "$VITE_SUPABASE_ANON_KEY" || { echo "::error::VITE_SUPABASE_ANON_KEY secret is required for release builds."; exit 1; }
       
       - name: Build Windows NSIS
         run: npm run ensure:electron && npm run build && npx electron-builder --win nsis --publish never
@@ -116,6 +130,11 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Verify public client build configuration
+        run: |
+          test -n "$VITE_SUPABASE_URL" || { echo "::error::VITE_SUPABASE_URL secret is required for release builds."; exit 1; }
+          test -n "$VITE_SUPABASE_ANON_KEY" || { echo "::error::VITE_SUPABASE_ANON_KEY secret is required for release builds."; exit 1; }
       
       - name: Build Linux AppImage
         run: npm run ensure:electron && npm run build && npx electron-builder --linux AppImage --publish never
@@ -148,6 +167,11 @@ jobs:
       
       - name: Install dependencies
         run: npm ci
+
+      - name: Verify public client build configuration
+        run: |
+          test -n "$VITE_SUPABASE_URL" || { echo "::error::VITE_SUPABASE_URL secret is required for release builds."; exit 1; }
+          test -n "$VITE_SUPABASE_ANON_KEY" || { echo "::error::VITE_SUPABASE_ANON_KEY secret is required for release builds."; exit 1; }
       
       - name: Build Vite assets
         run: npm run build
