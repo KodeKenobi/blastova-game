@@ -236,7 +236,8 @@ jobs:
       - name: Upload Android artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: android-artifacts
+          name: android-release-apk
+          retention-days: 30
           path: android/app/build/outputs/apk/release/app-release.apk
 
   smoke-test-android:
@@ -246,7 +247,7 @@ jobs:
       - name: Download Android artifact
         uses: actions/download-artifact@v4
         with:
-          name: android-artifacts
+          name: android-release-apk
           path: android-artifacts
 
       - name: Run release APK on Android emulator
@@ -277,7 +278,7 @@ jobs:
             macos-artifacts/*
             windows-artifacts/*
             linux-artifacts/*
-            android-artifacts/*
+            android-release-apk/*
           draft: false
           prerelease: false
         env:
