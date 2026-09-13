@@ -61,4 +61,6 @@ if (mount) {
   if (window.__tdScene && typeof window.__showWorldSelect === 'function') {
     window.__tdScene.showWorldSelectionSplashScreen?.();
   }
+
+  window.BlastovaStartup?.worldSelectionReady?.();
 }

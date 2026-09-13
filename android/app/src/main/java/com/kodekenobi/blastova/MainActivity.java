@@ -43,6 +43,7 @@ public class MainActivity extends BridgeActivity {
 
         super.onCreate(savedInstanceState);
         getBridge().getWebView().addJavascriptInterface(new AppUpdateBridge(this), "BlastovaUpdater");
+        getBridge().getWebView().addJavascriptInterface(new StartupReadyBridge(), "BlastovaStartup");
         enterImmersiveMode();
         getWindow().getDecorView().post(this::enterImmersiveMode);
     }
@@ -147,6 +148,13 @@ public class MainActivity extends BridgeActivity {
                 context.startActivity(install);
                 context.unregisterReceiver(this);
             }
+        }
+    }
+
+    private static final class StartupReadyBridge {
+        @JavascriptInterface
+        public void worldSelectionReady() {
+            android.util.Log.i("BlastovaStartup", "world-selection-ready");
         }
     }
 }
