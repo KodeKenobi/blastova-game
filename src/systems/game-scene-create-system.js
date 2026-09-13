@@ -372,7 +372,11 @@ export function createScene() {
       }
     } catch (_) {}
 
-    // No saved session — show landing page
+    // No saved session — show landing page. Dismiss the HTML splash even if
+    // world-select-loader.js is still importing and has not exposed its UI yet.
+    if (typeof window.__dismissSplash === 'function') {
+      window.__dismissSplash();
+    }
     this.showWorldSelectionSplashScreen();
     console.log('World selection screen shown');
     this.setupDebugHotkeys();

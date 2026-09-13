@@ -55,4 +55,10 @@ if (mount) {
     ns.text = s.textContent;
     document.body.appendChild(ns);
   });
+
+  // Phaser can finish creating its scene before this module's Supabase import
+  // and HTML injection complete. Hand the already-created scene its UI now.
+  if (window.__tdScene && typeof window.__showWorldSelect === 'function') {
+    window.__tdScene.showWorldSelectionSplashScreen?.();
+  }
 }
