@@ -152,6 +152,9 @@ jobs:
       - name: Build Vite assets
         run: npm run build
 
+      - name: Hash production web assets
+        run: npm run build:manifest
+
       # Generates android/capacitor-cordova-android-plugins/, which is gitignored.
       - name: Sync Capacitor Android project
         run: npx cap sync android
@@ -219,6 +222,12 @@ jobs:
           APK=android/app/build/outputs/apk/release/app-release.apk
           "$ANDROID_HOME/build-tools/34.0.0/apksigner" verify --print-certs "$APK" \
             || { echo "::error::APK failed signature verification"; exit 1; }
+
+      - name: Verify APK contains the current production web payload
+        run: |
+          APK=android/app/build/outputs/apk/release/app-release.apk
+          unzip -p "$APK" assets/public/production-manifest.sha256 > /tmp/apk-production-manifest.sha256
+          diff -u dist/production-manifest.sha256 /tmp/apk-production-manifest.sha256
       
       - name: Remove signing material
         if: always()

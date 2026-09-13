@@ -17,6 +17,7 @@
     "test:path-image": "node scripts/analyze-map-image-path.mjs",
     "test:place-wave2-near-path": "node scripts/place-wave2-near-path-towers.mjs",
     "build": "vite build",
+    "build:manifest": "node scripts/hash-dist.mjs",
     "preview": "vite preview",
     "preview:prod-local": "npm run build && vite preview --host 127.0.0.1 --port 4173 --strictPort",
     "electron:railway": "ELECTRON_RENDERER_URL=https://blastova-frontend-production.up.railway.app node scripts/run-electron-dev.mjs",
