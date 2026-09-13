@@ -5,6 +5,9 @@
   "main": "electron/main-cjs.js",
   "homepage": "./",
   "type": "module",
+  "engines": {
+    "node": "22.14.0"
+  },
   "scripts": {
     "ensure:electron": "node scripts/ensure-electron.mjs",
     "start": "vite preview",

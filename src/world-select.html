@@ -6915,6 +6915,7 @@
     ov.style.transition = 'opacity 0.5s ease';
     ov.style.display = 'block';
     if (bg) { bg.style.opacity = '0'; bg.style.transition = 'opacity 0.5s ease'; bg.style.display = 'block'; }
+    window.__tdReportWorldSelectionReady?.();
     setTimeout(function() {
       ov.style.opacity = '1';
       if (bg) bg.style.opacity = '1';

@@ -20,6 +20,28 @@ window.__tdAuthApi = {
   signOut,
 };
 
+window.__tdReportWorldSelectionReady = () => {
+  if (window.__tdWorldSelectionReadyReported || window.__tdWorldSelectionReadyReporting) return;
+  window.__tdWorldSelectionReadyReporting = true;
+
+  const report = () => {
+    if (typeof window.BlastovaStartup?.worldSelectionReady !== 'function') return false;
+    window.BlastovaStartup.worldSelectionReady();
+    window.__tdWorldSelectionReadyReported = true;
+    window.__tdWorldSelectionReadyReporting = false;
+    return true;
+  };
+
+  if (report()) return;
+  const readinessTimer = window.setInterval(() => {
+    if (report()) window.clearInterval(readinessTimer);
+  }, 250);
+  window.setTimeout(() => {
+    window.clearInterval(readinessTimer);
+    window.__tdWorldSelectionReadyReporting = false;
+  }, 10000);
+};
+
 if (!window.__tdButtonClickSoundBound) {
   window.__tdButtonClickSoundBound = true;
   document.addEventListener('click', (event) => {
@@ -60,17 +82,5 @@ if (mount) {
   // and HTML injection complete. Hand the already-created scene its UI now.
   if (window.__tdScene && typeof window.__showWorldSelect === 'function') {
     window.__tdScene.showWorldSelectionSplashScreen?.();
-  }
-
-  const reportWorldSelectionReady = () => {
-    if (typeof window.BlastovaStartup?.worldSelectionReady !== 'function') return false;
-    window.BlastovaStartup.worldSelectionReady();
-    return true;
-  };
-  if (!reportWorldSelectionReady()) {
-    const readinessTimer = window.setInterval(() => {
-      if (reportWorldSelectionReady()) window.clearInterval(readinessTimer);
-    }, 250);
-    window.setTimeout(() => window.clearInterval(readinessTimer), 10000);
   }
 }

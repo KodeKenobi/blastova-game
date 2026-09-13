@@ -7,15 +7,17 @@ adb logcat -c
 adb shell am start -n com.kodekenobi.blastova/.MainActivity
 
 attempt=0
-while [ "$attempt" -lt 180 ]; do
+while [ "$attempt" -lt 90 ]; do
   if adb logcat -d -s BlastovaStartup:I '*:S' | grep -q 'world-selection-ready'; then
     echo "Android release smoke test passed: world selection is mounted."
     exit 0
   fi
-  adb shell true >/dev/null
+  # ADB can briefly reconnect while an emulator or device is under load.
+  # Preserve the overall deadline instead of failing the smoke test early.
+  adb shell sleep 1 || true
   attempt=$((attempt + 1))
 done
 
 adb logcat -d -t 2000
-echo "::error::Android release APK did not mount world selection within 180 seconds."
+echo "::error::Android release APK did not mount world selection within 90 seconds."
 exit 1

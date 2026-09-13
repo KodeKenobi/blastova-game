@@ -54,7 +54,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '22.14.0'
           cache: 'npm'
       
       - name: Install dependencies
@@ -80,7 +80,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '22.14.0'
           cache: 'npm'
       
       - name: Install dependencies
@@ -106,7 +106,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '22.14.0'
           cache: 'npm'
       
       - name: Install Linux build dependencies
@@ -137,7 +137,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '22.14.0'
           cache: 'npm'
       
       - name: Setup Java
@@ -244,6 +244,8 @@ jobs:
     needs: build-android
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+
       - name: Download Android artifact
         uses: actions/download-artifact@v4
         with:
@@ -260,6 +262,24 @@ jobs:
           emulator-options: -no-window -no-audio -no-boot-anim
           disable-animations: true
           script: sh scripts/android-release-smoke.sh android-artifacts/app-release.apk
+
+      - name: Capture Android smoke-test diagnostics
+        if: failure()
+        run: |
+          adb logcat -d -t 4000 > android-smoke-logcat.txt || true
+          adb exec-out screencap -p > android-smoke-screen.png || true
+          adb shell dumpsys activity activities > android-smoke-activities.txt || true
+
+      - name: Upload Android smoke-test diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-smoke-test-diagnostics
+          retention-days: 30
+          path: |
+            android-smoke-logcat.txt
+            android-smoke-screen.png
+            android-smoke-activities.txt
 
   create-release:
     needs: [check-version, build-macos, build-windows, build-linux, build-android, smoke-test-android]
